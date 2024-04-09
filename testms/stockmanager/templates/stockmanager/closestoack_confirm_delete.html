@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>刪除該記錄</h1>
+
+<p>確定要刪除此筆資料 ?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input class="btn btn-success" type="submit" value="確定" />
+  <a class="btn btn-warning" href="{% url 'stockmanager:closestock_list' %}">取消</a>
+</form>
+
+{% endblock %}

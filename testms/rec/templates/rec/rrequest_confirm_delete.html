@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>刪除招募人員</h1>
+
+<p>確定要刪除該人員資料 ?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input class="btn btn-success" type="submit" value="確定" />
+  <a class="btn btn-warning" href="{% url 'rec:rec-list' %}">取消</a>
+</form>
+
+{% endblock %}

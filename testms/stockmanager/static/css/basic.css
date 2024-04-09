@@ -1,0 +1,119 @@
+h1 a {
+    color: #FCA205;
+}
+
+.page-header {
+    background-color: #ff9400;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+.content {
+    margin-left: 40px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+    color:green;
+}
+
+.date {
+    float: right;
+    color: #828282;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.post {
+    margin-bottom: 70px;
+}
+
+.post h1 a, .post h1 a:visited {
+    color: #000000;
+}
+
+table {
+  border: 1px;
+  border-collapse: collapse;
+  border-radius: 8px;
+  width: 100%;
+}
+th {
+  border: solid 1px #5ceffe;
+  padding: 16px 8px;
+}
+td {
+  border: solid 5px #5ceffe;
+  text-align: center;
+  padding: 8px;
+  color: #757575;
+}
+table td a{
+  background-color: #25b327;
+  color: white;
+  padding:5px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.popular {
+  position: relative;
+}
+.no1{
+  position: absolute;
+  top: -10px;
+  background: #bdcc28;
+  width: 60px;
+  font-size: 10px;
+  border-radius: 15px;
+  line-height: 1;
+  padding: 5px;
+}
+.basic {
+  background-color: #0ceffe;
+}
+.standard {
+  background-color: #039be5;
+  border: 1px solid #039be5;
+  color: white;
+}
+.premium {
+  border: 1px solid #2e3a4d;
+  background-color: #2e3a4d;
+  color: white;
+}
+.price {
+  font-size: 20px;
+  font-weight: 800;
+}
+.price td {
+  color: black;
+}
+.main {
+  width: 80%;
+  margin: 20px auto;
+  justify-content: center;
+  align-items: center;
+}
+
+
+

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content%}
+<h2> Request Create</h2>
+<form method='POST'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% for dep in form.RequestDep.field.queryset %}
+   <option value="{{ user.pk }}">
+  {{ dep }}
+     {% endfor %}
+</option>
+<input type="submit" value="save" />
+</form>
+{% endblock %}

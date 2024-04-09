@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} My store {% endblock %}
+  <h1>店家列表</h1>
+  <table>
+    <tr>
+      <th>店家</th>
+      <th>店名</th>
+      <th>電話</th>
+      <th>地址</th>
+    </tr>
+    {% for vlist in vendor_list %}
+    <tr>
+      <td>{{vlist.vendor_name}}</td>
+      <td>{{ vlist.store_name}}</td>
+      <td>{{ vlist.phone_number}}</td>
+      <td>{{ vlist.address}}</td>
+    </tr>
+  </table>
+{% endfor %}

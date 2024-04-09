@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+<head>{% csrf_token %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var calendar = $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay',
+                    backgroundColor:'lightBlue'
+                },
+                events: [
+			            {% for i in events %}
+			        {
+			          title          : '{{ i.CandidatesName }}',
+			          start          : new Date({{ i.InterviewTime|date:" Y,m-1, d" }}),
+                      end          : new Date({{ i.InterviewTime|date:" Y,m-1, d" }}),
+			          url            : 'http://127.0.0.1:8000/rec/rrupdate/{{ i.ID }}',
+			          allDay         : true  //由于我这个任务不需要精确到具体分钟，所以直接选择一整天
+			        },
+
+			        {% endfor %}
+			        ],
+                selectable: true,
+                selectHelper: true,
+                editable: true,
+                eventLimit: true,
+                select: function (start, end, allDay) {
+                    var title = prompt("请输入任务名称：");
+                    if (title) {
+                        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                        	// 任务起始时间，可以精确到秒
+                        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                        	// 任务结束时间
+                        $.ajax({
+                            type: "GET",
+                            url: '/add_event',	 //这里使用ajax将前端值传送到views.py
+                            data: {'title': title, 'start': start, 'end': end},
+                            dataType: "json",
+                            success: function (data) {
+                                calendar.fullCalendar('refetchEvents');
+		                        alert("添加任务成功！！！");
+		                        location.reload();  // 刷新一下页面
+                            },
+                            failure: function (data) {
+                                alert('添加失败，请检查问题！！！');
+                            }
+                        });
+                    }
+                },
+            });
+        });
+    </script>
+</head>
+<body>
+<br/>
+<h2 align="center"><a href="#">title</a></h2>
+<br/>
+<div class="container">
+    <div id="calendar"></div>
+</div>
+</body>
+</html>
+{% endblock  %}

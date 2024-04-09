@@ -1,0 +1,22 @@
+<!--{% extends 'rec/ext_add.html' %} -->
+{% load staticfiles %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/rec.css' %}">
+
+
+
+{% block content %}
+
+<h1><a href="{% url 'rec:add_ext' %}">Add Ext</a></h1>
+<tbody>
+    {% for ext in object_list %}
+<tr>
+    <td>
+        <p>{{ext.code}}: {{ext.num}}</p>
+    </td>
+
+    {% endfor %}
+</tr>
+</tbody>
+{% endblock %}

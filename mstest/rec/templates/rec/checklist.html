@@ -1,0 +1,19 @@
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>待辦事項</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for CheckList in object_list %}
+        <tr>
+            <td>{{ CheckList.CheckID }}</td>
+            <td>{{ CheckList.CheckedTime }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}

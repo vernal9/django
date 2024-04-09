@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load qr_code %}
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Task List</title>
+ </head>
+ <body>
+ <h3>Task List</h3>
+  <p> <a href="{% url 'tasks:task_create' %}"> + Add A New Task</a></p>
+ {% now "jS F Y H:i" %}
+ {% for task in tasks %}
+     <li>{{ forloop.counter }}. {{ task.name }} - {{ task.get_status_display }}
+         (<a href="{% url 'tasks:task_update' task.id %}">Update</a> |
+         <a href="{% url 'tasks:task_delete' task.id %}">Delete</a>)
+     </li>
+    {% empty %}
+    <li>Sorry, no task</li>
+ {% endfor %}
+
+
+
+
+
+
+ </body>
+ </html>

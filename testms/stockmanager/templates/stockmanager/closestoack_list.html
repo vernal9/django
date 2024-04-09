@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>制服庫存明細</h2>
+<div >
+
+            <a href="{% url 'stockmanager:closestock_create' %}"><button type="button" class="btn btn-success"  title="新增資料">
+                新增資料</button></a>
+</div>
+
+<div class="container px-4">
+  <div class="row gx-5">
+    <div class="col">
+     <div class="highlight">
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">序號</th>
+                <th scope="col">制服種類</th>
+                <th scope="col">尺寸</th>
+                <th scope="col">數量</th>
+                <th scope="col">修改</th>
+                <th scope="col">刪除</th>
+            </tr>
+        </thead>
+        <thead>
+        {% for aa in closelist %}
+
+         <tr>
+            <th scope="col">{{ aa.close_sn }}</th>
+            <th scope="col">{{ aa.close_id }}</th>
+            <th scope="col">{{ aa.close_size}}</th>
+            <th scope="col">{{ aa.close_number }}</th>
+            <th ><a href="{% url 'stockmanager:closestock_update' aa.close_sn %}" class="btn btn-primary">修改</a></th>
+            <th ><a href="{% url 'stockmanager:closestock_del' aa.close_sn %}" class="btn btn-danger">刪除</a></th>
+         </tr>
+        {% endfor %}
+        </thead>
+    </table>
+ </div>
+    </div>
+    <div class="col">
+
+    <table class="table table-bordered border-primary">
+         <thead>
+         <tr>
+             <th>制服種類</th>
+             <th>尺寸</th>
+             <th>庫存數量</th>
+         </tr>
+        {% for aa in sum_list %}
+         <tr>
+            <th>{{ aa.close_id }}</th>
+            <th>{{ aa.close_size}}</th>
+            <th>{{ aa.total }}</th>
+         </tr>
+        {% endfor %}
+        </thead>
+    </table>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

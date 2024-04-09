@@ -1,0 +1,15 @@
+
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="form-group col-md-6">
+            
+            {{ form }}
+
+            <input class="btn btn-success" type="submit" value="儲存" />
+        </div>
+    </div>
+</form>
+{% endblock  %}

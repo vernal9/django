@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+ <div class="">
+     <table>
+         <thead>
+         <tr><th><a href="/rec/create ">新增</a></th></tr>
+         <tr><th><a href="/rec/todolist ">待辦清單</a></th></tr>
+           <tr>
+               <th>ID</th><th>驗證碼</th>><th>姓名</th><th>狀態</th><th>結案否</th>
+           </tr>
+         </thead>
+
+     <tbody>
+     {% if object_list %}
+     {% for RRequest in object_list %}
+     <tr>
+         <td>{{ RRequest.ID }}</td>
+         <td>{{ RRequest.VerificationCode}}</td>
+         <td>{{ RRequest.CandidatesName }}</td>
+         <td>{{ RRequest.get_RecruitStatus_display}}({{ RRequest.RecruitStatus }})</td>
+         <td>{{RRequest.get_IsFinished_display }}</td>
+         <td> <a href="/rec/{{RRequest.ID}}/finishupdate ">結案</a> </td>
+     </tr>
+
+{% endfor %}
+{% endif %}
+</tbody>
+ </table>
+      </div>
+{% endblock content %}
